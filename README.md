@@ -1,5 +1,6 @@
 # Tibu.ai
-Group 13 Microsoft/mdoc/ALA Hackthon presentation
+Group 13 Microsoft/mdoc/ALA Hackthon presentation(Use Jupyter notebook file(hackathon chat symptoms.ipynb) for best experience)
+
 
 This is a rule based chat bot made using python
 
