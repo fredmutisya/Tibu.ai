@@ -53,12 +53,17 @@ PYTHON LIBRARIES
 Tibu.ai makes use of the following  libraries in python.
 
 pandas-manipulate dataframes
-nltk-Natural language toolkit-
-removing stop words and stemming words
+
+nltk-Natural language toolkit-removing stop words and stemming words
+
 Textblob-word processing
+
 re-regular expressions
+
 sklearn-text- text classification
+
 autocorrect-spelling corrector
+
 openpyxl-read/write excel
 
 
