@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import Response
 from hackathon_chat_symptoms import *
+from bot_commands import *
 import requests
  
 TOKEN = "5724165243:AAHXbboth6Z2vaeQ19LZ3IBNy2Yk7zd8sK4"
@@ -32,17 +33,22 @@ def index():
         msg = request.get_json()
        
         chat_id,txt = parse_message(msg)
-        if txt == 'Hey':
-            tel_send_message(chat_id,'Hello, welcome to Tibu.ai')
-        elif txt == 'Nairobi':
-            tel_send_message(chat_id,diag)
+        print(classify_message(txt))
+        if txt == "/start":
+            tel_send_message(chat_id,answer_greeting())
+        if classify_message(txt) == 1:
+            tel_send_message(chat_id,answer_greeting())
+        elif classify_message(txt) == 2:
+            try:
+                tel_send_message(chat_id,get_a_specialist(chat_id,txt))
+            except:
+                tel_send_message(chat_id,"Sorry. I dint get that. Try Again.")
         else:
             try:
-                diag = get_specialists(make_diagnosis(txt))
-                diagnosis_text = ','.join(make_diagnosis(txt))
-                tel_send_message(chat_id,'Hi there, from the brief description of your symptoms, possible diagnoses could be '+diagnosis_text+'. If you want suggestions on possible specialists in your area, please indicate your county of residence')
+                set_diagnosis(chat_id,txt)
+                tel_send_message(chat_id,reply_diagnosis(get_diagnosis(chat_id))) 
             except:
-                tel_send_message(chat_id,'Whoops! We are still working to support your query')
+                tel_send_message(chat_id,"How are you feeling?") 
         return Response('ok', status=200)
     else:
         return "<h1>Welcome!</h1>"

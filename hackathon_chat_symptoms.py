@@ -105,7 +105,7 @@ def make_diagnosis(inputText):
     return diagnosis
 
 
-def get_specialists(diagnosis):
+def get_specialists(diagnosis, county):
 
 
     #import dataset that matches specialists and ICD 10 diagnoses
@@ -148,7 +148,7 @@ def get_specialists(diagnosis):
 
     #we will use loc from the pandas library to match the speciality with the diagnosis
 
-    reply_1 = spec.loc[(spec['SPECIALTY'] == str(name_spec)) & (spec['COUNTY'] == 'nairobi')]
+    reply_1 = spec.loc[(spec['SPECIALTY'] == str(name_spec)) & (spec['COUNTY'] == str(county))]
 
 
 
