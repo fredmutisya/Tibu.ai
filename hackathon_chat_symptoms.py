@@ -140,6 +140,7 @@ def get_specialists(diagnosis, county):
     #specialist_3 = str(specialist_3)[6:]
 
     name_spec='dermatologist'
+    county = 'nairobi'
     #print(str.lower(str.strip(str(specialist_1)[6:])))
     #print(name_spec)
 
